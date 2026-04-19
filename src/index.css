@@ -37,6 +37,7 @@ h1 {
   font-family: "Caprasimo-Regular", sans-serif;
   font-size: clamp(48px, 8vw, 96px);
   line-height: 1.1;
+  letter-spacing: 0.05em;
 }
 
 button {
