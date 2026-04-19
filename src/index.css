@@ -1,11 +1,14 @@
+@import url(./vendor/normalize.css);
+@import url(./vendor/fonts.css);
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Caprasimo-Regular", Inter, system-ui, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color-scheme: light;
+  color: #1a1a1a;
+  background-color: #ffffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -31,7 +34,8 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-family: "Caprasimo-Regular", sans-serif;
+  font-size: clamp(48px, 8vw, 96px);
   line-height: 1.1;
 }
 
