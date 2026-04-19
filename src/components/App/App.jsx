@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 import Header from "../Header/Header";
+import mainPhoto from "../../images/bakedphoto.jpeg";
 
 function App() {
   const [isDataLoaded, setIsDataLoaded] = useState(false);
@@ -17,9 +18,13 @@ function App() {
             <Route
               path="/"
               element={
-                <section className="hero">
+                <section className="main__content">
                   <h1 className="main__title">rise & hydrate</h1>
-                  {/* Your large hero logo or image goes here */}
+                  <img
+                    src={mainPhoto}
+                    alt="Freshly baked loaves photo"
+                    className="main__image"
+                  />
                 </section>
               }
             />

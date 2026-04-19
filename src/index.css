@@ -27,17 +27,10 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
-}
-
-h1 {
-  font-family: "Caprasimo-Regular", sans-serif;
-  font-size: clamp(48px, 8vw, 96px);
-  line-height: 1.1;
-  letter-spacing: 0.05em;
+  width: 100%;
+  background-color: #ffffff;
 }
 
 button {
