@@ -6,6 +6,8 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import Header from "../Header/Header";
 import mainPhoto from "../../images/bakedphoto.jpeg";
 
+import Footer from "../Footer/Footer";
+
 function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const { pathname, hash } = useLocation();
@@ -63,11 +65,13 @@ function App() {
 
                   <section className="about" id="about">
                     <p className="about__label">WHO WE ARE</p>
-                    <h2 className="about__title">
-                      We are your personal smart baking assistant and we are
-                      here to help you to master the recipe you are needing to
-                      bake.
-                    </h2>
+                    <div className="about__text-container">
+                      <h2 className="about__text">
+                        We are your personal smart baking assistant and we are
+                        here to help you to master the recipe you are needing to
+                        bake.
+                      </h2>
+                    </div>
                     <Link to="/recipes" className="receipe__button">
                       LET'S BAKE
                     </Link>
@@ -97,6 +101,7 @@ function App() {
             <Route path="/about" element={<Navigate to="/#about" replace />} />
           </Routes>
         </main>
+        <Footer />
       </div>
     </CurrentTemperatureUnitContext.Provider>
   );
