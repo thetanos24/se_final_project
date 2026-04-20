@@ -21,13 +21,13 @@ function Header() {
               <ToggleSwitch />
             </li>
             <li className="header__nav-item">
-              <Link to="/gallery" className="header__nav-link">
-                GALLERY
-              </Link>
+              <a href="/#about" className="header__nav-link">
+                ABOUT
+              </a>
             </li>
             <li className="header__nav-item">
-              <Link to="/about" className="header__nav-link">
-                ABOUT
+              <Link to="/recipes" className="header__nav-link">
+                RECIPES
               </Link>
             </li>
             <li className="header__nav-item">

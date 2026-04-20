@@ -1,13 +1,25 @@
-import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUniteContext";
-import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Routes, Route, Link, useLocation, Navigate } from "react-router-dom";
 import "./App.css";
 
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUniteContext";
 import Header from "../Header/Header";
 import mainPhoto from "../../images/bakedphoto.jpeg";
 
 function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) {
+      window.scrollTo(0, 0);
+    } else {
+      const element = document.getElementById(hash.replace("#", ""));
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [pathname, hash]);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -23,23 +35,23 @@ function App() {
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
     >
-      <BrowserRouter>
-        <div className="page">
-          <Header />
+      <div className="page">
+        <Header />
 
-          <main className="main">
-            <Routes>
-              <Route
-                path="/"
-                element={
+        <main className="main">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
                   <section className="main__content">
                     <h1 className="main__title">rise & hydrate</h1>
                     <div className="main__weather-info">
                       <p className="main__weather-text">
-                        Today in {weatherData.city} it is{" "}
+                        Hello Baker! Today in {weatherData.city} it is{" "}
                         {weatherData.temp[currentTemperatureUnit]}&deg;
                         {currentTemperatureUnit}, and humidity is{" "}
-                        {weatherData.humidity}%. Let's bake!
+                        {weatherData.humidity}%.
                       </p>
                     </div>
                     <img
@@ -48,41 +60,44 @@ function App() {
                       className="main__image"
                     />
                   </section>
-                }
-              />
 
-              {/* Route 2: Gallery (Required second route) */}
-              <Route
-                path="/gallery"
-                element={
-                  <section className="gallery">
-                    <h2 className="gallery__title">Gallery</h2>
-                    {/* Gallery content will go here in the future */}
+                  <section className="about" id="about">
+                    <p className="about__label">WHO WE ARE</p>
+                    <h2 className="about__title">
+                      We are your personal smart baking assistant and we are
+                      here to help you to master the recipe you are needing to
+                      bake.
+                    </h2>
+                    <Link to="/recipes" className="receipe__button">
+                      LET'S BAKE
+                    </Link>
                   </section>
-                }
-              />
+                </>
+              }
+            />
 
-              {/* Additional Routes matching your Header links */}
-              <Route
-                path="/about"
-                element={
-                  <section className="about">
-                    <h2>About Us</h2>
-                  </section>
-                }
-              />
-              <Route
-                path="/contact"
-                element={
-                  <section className="contact">
-                    <h2>Contact</h2>
-                  </section>
-                }
-              />
-            </Routes>
-          </main>
-        </div>
-      </BrowserRouter>
+            <Route
+              path="/recipes"
+              element={
+                <section className="recipes">
+                  <h2>Recipes</h2>
+                </section>
+              }
+            />
+
+            <Route
+              path="/contact"
+              element={
+                <section className="contact">
+                  <h2>Contact</h2>
+                </section>
+              }
+            />
+
+            <Route path="/about" element={<Navigate to="/#about" replace />} />
+          </Routes>
+        </main>
+      </div>
     </CurrentTemperatureUnitContext.Provider>
   );
 }
