@@ -1,0 +1,108 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px); /* Blurs the grid behind the modal */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5000; /* Keeps it above everything else */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.modal__container {
+  background: #ffffff;
+  width: 100%;
+  max-width: 550px;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal__close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #ffffff;
+  border: none;
+  font-size: 28px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  transition: background 0.2s;
+}
+
+.modal__close:hover {
+  background-color: #f5f5f5;
+}
+
+.modal__image {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.modal__content {
+  padding: 30px;
+}
+
+.modal__title {
+  font-family: "Noto Serif", serif;
+  font-size: 28px;
+  margin: 0 0 10px 0;
+  color: #1a1a1a;
+}
+
+.modal__description {
+  font-family: "Outfit-Medium", sans-serif;
+  color: #666;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.modal__subtitle {
+  font-family: "Outfit-Bold", sans-serif;
+  font-size: 18px;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+.modal__method-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modal__method-list li {
+  font-family: "Outfit-Medium", sans-serif;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  padding-left: 15px;
+  border-left: 3px solid #ffc800; /* Vertical gold accent line */
+}

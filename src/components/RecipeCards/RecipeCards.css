@@ -1,0 +1,66 @@
+.recipe-card {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column; /* Stack image and content */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  height: 100%; /* Ensures all cards in a row have the same height */
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-card__image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.recipe-card__content {
+  padding: 20px;
+  flex-grow: 1; /* This is key: it pushes the button to the bottom */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.recipe-card__name {
+  font-family: "Outfit-Bold", sans-serif;
+  font-size: 20px;
+  color: #1a1a1a;
+  margin: 0 0 10px 0;
+}
+
+.recipe-card__description {
+  font-family: "Outfit-Medium", sans-serif;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.recipe-card__button {
+  padding: 12px;
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 10px;
+  font-family: "Outfit-Bold", sans-serif;
+  font-size: 13px;
+  color: #1a1a1a;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.recipe-card__button:hover {
+  background-color: #ffc800; /* Signature Arid Baker Gold */
+}

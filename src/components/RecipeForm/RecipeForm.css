@@ -1,0 +1,186 @@
+/* --- 1. LAYOUT WRAPPERS --- */
+.recipe-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.recipe-form__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 40px;
+  background-color: #fcfcfc;
+  border-radius: 30px;
+  width: 100%;
+  /* Max-width expands to 900px to fit the grid, 
+     but flex-items will keep it looking centered when narrow */
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  transition: all 0.4s ease-in-out;
+}
+
+/* --- 2. TYPOGRAPHY --- */
+.recipe-form__title {
+  font-family: "Noto Serif", serif;
+  font-size: 32px;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.recipe-form__subtitle {
+  font-family: "Outfit-Medium", sans-serif;
+  color: #7a7a7a;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 30px;
+  max-width: 500px;
+}
+
+/* --- 3. INPUT DASHBOARD (STAGE 1) --- */
+.recipe-stats-display {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.recipe-stat {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 140px;
+}
+
+.recipe-stat__label {
+  font-family: "Outfit-Bold", sans-serif;
+  font-size: 11px;
+  color: #a0a0a0;
+  letter-spacing: 0.12em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.recipe-stat__input {
+  border: none;
+  background: transparent;
+  font-family: "Outfit-Bold", sans-serif;
+  font-size: 28px;
+  color: #1a1a1a;
+  text-align: center;
+  width: 100px;
+  outline: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.recipe-stat__input:focus {
+  border-bottom: 2px solid #ffc800;
+}
+
+/* Remove arrows from number input */
+.recipe-stat__input::-webkit-outer-spin-button,
+.recipe-stat__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* --- 4. THE LOADER --- */
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 60px;
+}
+
+.dough-ball {
+  width: 70px;
+  height: 50px;
+  background-color: #f3e5ab;
+  border-radius: 50% 50% 45% 45%;
+  animation: rise 3s ease-in-out infinite;
+  box-shadow: inset -4px -4px 10px rgba(0, 0, 0, 0.05);
+}
+
+@keyframes rise {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.6) translateY(-10px);
+    opacity: 1;
+  }
+}
+
+.loader-text {
+  font-family: "Outfit-Medium", sans-serif;
+  color: #575757;
+  font-size: 18px;
+  font-style: italic;
+}
+
+/* --- 5. BAKE PLAN SUMMARY (STAGE 2) --- */
+.recipe-results {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recipe-results__card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 500px; /* Plan stays centered and readable */
+  border-left: 5px solid #ffc800;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
+}
+
+.recipe-results__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recipe-results__list li {
+  font-family: "Outfit-Medium", sans-serif;
+  font-size: 18px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f5f5f5;
+  color: #333;
+}
+
+.recipe-results__list li:last-child {
+  border-bottom: none;
+}
+
+.recipe-results__note {
+  display: block;
+  font-size: 13px;
+  color: #ff9900;
+  margin-top: 4px;
+}
+
+/* Title for the Grid Section */
+.recipe-list__title {
+  font-family: "Noto Serif", serif;
+  font-size: 24px;
+  margin: 20px 0;
+  color: #1a1a1a;
+}

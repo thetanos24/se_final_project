@@ -26,13 +26,13 @@ function Header() {
               </a>
             </li>
             <li className="header__nav-item">
-              <Link to="/recipes" className="header__nav-link">
-                RECIPES
+              <Link to="/contact" className="header__nav-link">
+                RH101
               </Link>
             </li>
             <li className="header__nav-item">
-              <Link to="/contact" className="header__nav-link">
-                CONTACT
+              <Link to="/recipes" className="header__nav-link">
+                RECIPES
               </Link>
             </li>
           </ul>
