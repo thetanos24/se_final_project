@@ -11,6 +11,7 @@
   align-items: center;
   z-index: 2000;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .modal__container {
@@ -23,6 +24,7 @@
   overflow-y: auto;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
   animation: modalFadeIn 0.3s ease-out;
+  -webkit-overflow-scrolling: touch;
 }
 
 @keyframes modalFadeIn {
@@ -54,17 +56,26 @@
   justify-content: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   z-index: 10;
-  transition: transform 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .modal__close:hover {
   transform: scale(1.1);
+  background-color: #f0f0f0;
+}
+
+.modal__close:focus-visible {
+  outline: 3px solid #ffc800;
+  outline-offset: 2px;
 }
 
 .modal__image {
   width: 100%;
   height: 300px;
   object-fit: cover;
+  display: block;
 }
 
 .modal__content {
@@ -75,7 +86,7 @@
   font-family: "Caprasimo-Regular", serif;
   font-size: 32px;
   color: #1a1a1a;
-  margin-bottom: 10px;
+  margin: 0 0 10px 0;
 }
 
 .modal__description {
@@ -92,7 +103,7 @@
 
 .modal__subtitle {
   font-family: "Outfit-Bold", sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: #a0a0a0;
@@ -121,10 +132,12 @@
 .modal__list-item--highlight {
   color: #1a1a1a;
   background-color: #fff9e6;
-  margin: 0 -40px;
+  margin-left: -40px;
+  margin-right: -40px;
   padding: 15px 40px;
   border-left: 4px solid #ffc800;
   font-family: "Outfit-Bold", sans-serif;
+  box-sizing: border-box;
 }
 
 .modal__list-item:last-child {
@@ -158,38 +171,49 @@
   min-width: 25px;
 }
 
-.modal__instruction-step:last-child {
-  border-bottom: none;
-}
-
-.modal__baking-step {
-  border-left: 3px solid #ffc800;
-  padding: 15px 20px !important;
-  margin-bottom: 12px;
-  background-color: #fffdf5;
-  border-bottom: none !important;
-  border-radius: 0 12px 12px 0;
+.modal__tip-text {
   font-family: "Outfit-Medium", sans-serif;
-}
-
-.modal__baking-icon {
-  margin-right: 12px;
-  font-size: 18px;
-}
-
-.modal__section:last-of-type {
-  margin-bottom: 60px;
+  font-style: italic;
+  font-size: 14px;
+  color: #575757;
+  margin-top: 8px;
+  line-height: 1.4;
 }
 
 @media (max-width: 480px) {
+  .modal {
+    padding: 10px;
+  }
+
+  .modal__container {
+    border-radius: 20px;
+  }
+
+  .modal__image {
+    height: 200px;
+  }
+
   .modal__content {
     padding: 25px;
   }
+
   .modal__list-item--highlight {
-    margin: 0 -25px;
+    margin-left: -25px;
+    margin-right: -25px;
     padding: 15px 25px;
   }
+
   .modal__title {
     font-size: 26px;
+  }
+
+  .modal__list-item {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 320px) {
+  .modal__instruction-step {
+    font-size: 14px;
   }
 }

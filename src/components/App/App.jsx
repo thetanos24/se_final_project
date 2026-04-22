@@ -10,7 +10,7 @@ import RecipeForm from "../RecipeForm/RecipeForm";
 
 import { useWeather } from "../../hooks/useWeather";
 
-import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUniteContext";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
 function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");

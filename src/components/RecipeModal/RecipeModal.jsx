@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUniteContext";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import "./RecipeModal.css";
 
 function RecipeModal({ recipe, onClose, water, temp }) {

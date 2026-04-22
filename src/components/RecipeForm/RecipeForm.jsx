@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import "./RecipeForm.css";
 import RecipeCards from "../RecipeCards/RecipeCards";
 import RecipeModal from "../RecipeModal/RecipeModal";
-import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUniteContext";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { RECIPE_VARIATIONS } from "../../utils/constants";
 import { useBakeCalculator } from "../../hooks/useBakeCalculator";
 
@@ -23,18 +23,8 @@ function RecipeForm({ temperature, humidity }) {
     if (humidity) setLocalHumidity(humidity);
   }, [temperature, humidity]);
 
-  useEffect(() => {
-    if (!localTemp) return;
-    const t = Number(localTemp);
-
-    if (currentTemperatureUnit === "C" && t > 40) {
-      setLocalTemp(Math.round(((t - 32) * 5) / 9));
-    } else if (currentTemperatureUnit === "F" && t < 40) {
-      setLocalTemp(Math.round((t * 9) / 5 + 32));
-    }
-  }, [currentTemperatureUnit]);
-
-  const handleGenerate = () => {
+  const handleGenerate = (e) => {
+    e.preventDefault();
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
@@ -78,7 +68,7 @@ function RecipeForm({ temperature, humidity }) {
               </ul>
             </div>
 
-            <h3 className="recipe-list__title">Choose Your Style</h3>
+            <h3 className="recipe-list__title">choose your style</h3>
             <div className="recipe-grid">
               {RECIPE_VARIATIONS.map((recipe) => (
                 <RecipeCards
@@ -90,6 +80,7 @@ function RecipeForm({ temperature, humidity }) {
             </div>
 
             <button
+              type="button"
               onClick={() => setShowRecipe(false)}
               className="about__button"
               style={{ marginTop: "40px" }}
@@ -98,7 +89,7 @@ function RecipeForm({ temperature, humidity }) {
             </button>
           </div>
         ) : (
-          <>
+          <form className="recipe-form" onSubmit={handleGenerate}>
             <h2 className="recipe-form__title">ready to bake?</h2>
             <p className="recipe-form__subtitle">
               We've detected your environment, but feel free to adjust these
@@ -107,14 +98,16 @@ function RecipeForm({ temperature, humidity }) {
 
             <div className="recipe-stats-display">
               <div className="recipe-stat">
-                <span className="recipe-stat__label">KITCHEN TEMP</span>
+                <label className="recipe-stat__label" htmlFor="temp-select">
+                  KITCHEN TEMP
+                </label>
                 <select
+                  id="temp-select"
                   className="recipe-stat__input"
                   value={localTemp}
                   onChange={(e) => setLocalTemp(e.target.value)}
                 >
                   <option value="">Select Range</option>
-
                   {temperature && (
                     <option value={temperature}>
                       {temperature}°{currentTemperatureUnit} (Current Local)
@@ -139,8 +132,11 @@ function RecipeForm({ temperature, humidity }) {
               </div>
 
               <div className="recipe-stat">
-                <span className="recipe-stat__label">KITCHEN FEELS</span>
+                <label className="recipe-stat__label" htmlFor="humidity-select">
+                  KITCHEN FEELS
+                </label>
                 <select
+                  id="humidity-select"
                   className="recipe-stat__input"
                   value={localHumidity}
                   onChange={(e) => setLocalHumidity(e.target.value)}
@@ -159,13 +155,13 @@ function RecipeForm({ temperature, humidity }) {
             </div>
 
             <button
-              onClick={handleGenerate}
-              className="receipe__button"
+              type="submit"
+              className="recipe__button"
               disabled={!localTemp || !localHumidity}
             >
               SHOW ME MY PLAN!
             </button>
-          </>
+          </form>
         )}
       </div>
 

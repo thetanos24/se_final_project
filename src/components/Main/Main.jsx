@@ -3,7 +3,7 @@ import mainPhoto from "../../images/bakedphoto.jpeg";
 import starterPhoto from "../../images/sourdough-starter.jpg";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUniteContext";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
 function Main({ weatherData }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
@@ -13,7 +13,7 @@ function Main({ weatherData }) {
   const cityName = weatherData?.city || "Surprise";
 
   return (
-    <>
+    <main className="main">
       <section className="main__content">
         <h1 className="main__title">rise & hydrate</h1>
         <div className="main__weather-info">
@@ -36,7 +36,7 @@ function Main({ weatherData }) {
         </div>
         <img
           src={mainPhoto}
-          alt="Freshly baked loaves"
+          alt="Freshly baked sourdough loaves"
           className="main__image"
         />
       </section>
@@ -44,10 +44,10 @@ function Main({ weatherData }) {
       <section className="about" id="about">
         <p className="about__label">WHO WE ARE</p>
         <div className="about__text-container">
-          <h2 className="about__text">
+          <p className="about__description">
             We are the first smart assistant built for the Arid Baker, helping
             you master sourdough hydration in any climate.
-          </h2>
+          </p>
         </div>
       </section>
 
@@ -56,19 +56,19 @@ function Main({ weatherData }) {
           <p className="starter__label">TO START</p>
           <img
             src={starterPhoto}
-            alt="Active sourdough starter"
+            alt="Active bubbly sourdough starter in a jar"
             className="starter__image"
           />
-          <h2 className="starter__title">
+          <p className="starter__description">
             You will need your active sourdough starter.
-          </h2>
+          </p>
 
-          <Link to="/recipes" className="receipe__button">
+          <Link to="/recipes" className="recipe__button">
             LET'S BAKE!
           </Link>
         </div>
       </section>
-    </>
+    </main>
   );
 }
 
