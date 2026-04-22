@@ -13,19 +13,16 @@ function RecipeForm({ temperature, humidity }) {
 
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
-  // Initialize with API data if available
   const [localTemp, setLocalTemp] = useState(temperature || "");
   const [localHumidity, setLocalHumidity] = useState(humidity || "");
 
   const { adjustedWater } = useBakeCalculator(localHumidity, 70);
 
-  // 1. THE API FLOW: Automatically updates state when weather data arrives
   useEffect(() => {
     if (temperature) setLocalTemp(temperature);
     if (humidity) setLocalHumidity(humidity);
   }, [temperature, humidity]);
 
-  // 2. THE UNIT CONVERTER: Fixes the "80°C" bug by converting the number when you toggle
   useEffect(() => {
     if (!localTemp) return;
     const t = Number(localTemp);
@@ -56,7 +53,7 @@ function RecipeForm({ temperature, humidity }) {
         ) : showRecipe ? (
           <div className="recipe-results">
             <h2 className="recipe-form__title">your baking plan</h2>
-            {/* Results List (Flour, Water, etc.) */}
+
             <div className="recipe-results__card">
               <ul className="recipe-results__list">
                 <li>
@@ -109,7 +106,6 @@ function RecipeForm({ temperature, humidity }) {
             </p>
 
             <div className="recipe-stats-display">
-              {/* TEMPERATURE SELECT */}
               <div className="recipe-stat">
                 <span className="recipe-stat__label">KITCHEN TEMP</span>
                 <select
@@ -118,7 +114,7 @@ function RecipeForm({ temperature, humidity }) {
                   onChange={(e) => setLocalTemp(e.target.value)}
                 >
                   <option value="">Select Range</option>
-                  {/* The API Option - Always stays at the top if data exists */}
+
                   {temperature && (
                     <option value={temperature}>
                       {temperature}°{currentTemperatureUnit} (Current Local)
@@ -142,7 +138,6 @@ function RecipeForm({ temperature, humidity }) {
                 </select>
               </div>
 
-              {/* HUMIDITY SELECT */}
               <div className="recipe-stat">
                 <span className="recipe-stat__label">KITCHEN FEELS</span>
                 <select

@@ -26,8 +26,8 @@ function Header() {
               </a>
             </li>
             <li className="header__nav-item">
-              <Link to="/contact" className="header__nav-link">
-                RH101
+              <Link to="/resources" className="header__nav-link">
+                RESOURCES
               </Link>
             </li>
             <li className="header__nav-item">

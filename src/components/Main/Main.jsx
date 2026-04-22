@@ -44,8 +44,8 @@ function Main({ weatherData }) {
         <p className="about__label">WHO WE ARE</p>
         <div className="about__text-container">
           <h2 className="about__text">
-            We are your personal smart baking assistant for your sourdough to
-            help you master the recipe you are needing to bake.
+            We are the first smart assistant built for the Arid Baker, helping
+            you master sourdough hydration in any climate.
           </h2>
         </div>
         <Link to="/recipes" className="receipe__button">

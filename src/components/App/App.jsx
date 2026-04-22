@@ -5,6 +5,7 @@ import "./App.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
+import Resources from "../Resources/Resources";
 import RecipeForm from "../RecipeForm/RecipeForm";
 
 import { useWeather } from "../../hooks/useWeather";
@@ -58,14 +59,7 @@ function App() {
               }
             />
 
-            <Route
-              path="/contact"
-              element={
-                <section className="contact">
-                  <h2>R&H 101</h2>
-                </section>
-              }
-            />
+            <Route path="/resources" element={<Resources />} />
 
             <Route path="/about" element={<Navigate to="/#about" replace />} />
           </Routes>
