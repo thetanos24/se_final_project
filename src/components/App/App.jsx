@@ -7,10 +7,15 @@ import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
 import RecipeForm from "../RecipeForm/RecipeForm";
 
+import { useWeather } from "../../hooks/useWeather";
+
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUniteContext";
 
 function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+
+  const weatherData = useWeather();
+
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
@@ -26,12 +31,6 @@ function App() {
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
-  };
-
-  const weatherData = {
-    city: "Surprise",
-    temp: { F: 72, C: 22 },
-    humidity: 45,
   };
 
   return (
@@ -50,8 +49,10 @@ function App() {
               element={
                 <section className="recipes">
                   <RecipeForm
-                    temperature={weatherData.temp[currentTemperatureUnit]}
-                    humidity={weatherData.humidity}
+                    temperature={
+                      weatherData?.temp?.[currentTemperatureUnit] || 0
+                    }
+                    humidity={weatherData?.humidity || 0}
                   />
                 </section>
               }

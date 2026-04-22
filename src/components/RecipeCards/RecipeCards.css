@@ -1,66 +1,85 @@
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  width: 100%;
+  margin-top: 20px;
+}
+
 .recipe-card {
   background: #ffffff;
-  border-radius: 20px;
+  border-radius: 24px;
   overflow: hidden;
   display: flex;
-  flex-direction: column; /* Stack image and content */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  flex-direction: column;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
   border: 1px solid #f0f0f0;
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-  height: 100%; /* Ensures all cards in a row have the same height */
+    transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.3s ease;
+  height: 100%;
 }
 
 .recipe-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  border-color: #ffc800;
 }
 
 .recipe-card__image {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.recipe-card:hover .recipe-card__image {
+  transform: scale(1.05);
 }
 
 .recipe-card__content {
-  padding: 20px;
-  flex-grow: 1; /* This is key: it pushes the button to the bottom */
+  padding: 24px;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .recipe-card__name {
-  font-family: "Outfit-Bold", sans-serif;
-  font-size: 20px;
+  font-family: "Caprasimo-Regular", serif;
+  text-align: center;
+  font-size: 22px;
   color: #1a1a1a;
-  margin: 0 0 10px 0;
+  margin: 0 0 12px 0;
+  line-height: 1.2;
 }
 
 .recipe-card__description {
   font-family: "Outfit-Medium", sans-serif;
-  font-size: 14px;
-  color: #666;
-  line-height: 1.5;
-  margin-bottom: 20px;
+  font-size: 15px;
+  text-align: center;
+  color: #7a7a7a;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  flex-grow: 1;
 }
 
 .recipe-card__button {
-  padding: 12px;
-  background-color: #f5f5f5;
-  border: none;
-  border-radius: 10px;
+  padding: 14px;
+  background-color: #fcfcfc;
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
   font-family: "Outfit-Bold", sans-serif;
   font-size: 13px;
   color: #1a1a1a;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
   width: 100%;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
 }
 
 .recipe-card__button:hover {
-  background-color: #ffc800; /* Signature Arid Baker Gold */
+  background-color: #ffc800;
+  border-color: #ffc800;
+  transform: scale(1.02);
 }

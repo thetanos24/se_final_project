@@ -7,16 +7,31 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 function Main({ weatherData }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
+  const tempValue = weatherData?.temp?.[currentTemperatureUnit];
+  const humidityValue = weatherData?.humidity;
+  const cityName = weatherData?.city || "Surprise";
+
   return (
     <>
       <section className="main__content">
         <h1 className="main__title">rise & hydrate</h1>
         <div className="main__weather-info">
-          <p className="main__weather-text">
-            Hello Baker! Today in {weatherData.city} it is{" "}
-            {weatherData.temp[currentTemperatureUnit]}&deg;
-            {currentTemperatureUnit}, and humidity is {weatherData.humidity}%.
-          </p>
+          {weatherData.isApiFailed ? (
+            <p className="main__weather-text">
+              Hello Baker, we couldn't locate your environment, but we are still
+              able to assist you. Please continue on to recipes to manually add
+              the environmental variables.
+            </p>
+          ) : tempValue !== undefined && tempValue !== 0 ? (
+            <p className="main__weather-text">
+              Hello Baker! Today in {cityName} it is {tempValue}&deg;
+              {currentTemperatureUnit}, and humidity is {humidityValue}%.
+            </p>
+          ) : (
+            <p className="main__weather-text">
+              Detecting your local baking conditions...
+            </p>
+          )}
         </div>
         <img
           src={mainPhoto}
@@ -29,12 +44,12 @@ function Main({ weatherData }) {
         <p className="about__label">WHO WE ARE</p>
         <div className="about__text-container">
           <h2 className="about__text">
-            We are your personal smart baking assistant and we are here to help
-            you to master the recipe you are needing to bake.
+            We are your personal smart baking assistant for your sourdough to
+            help you master the recipe you are needing to bake.
           </h2>
         </div>
         <Link to="/recipes" className="receipe__button">
-          LET'S BAKE
+          LET'S BAKE!
         </Link>
       </section>
     </>

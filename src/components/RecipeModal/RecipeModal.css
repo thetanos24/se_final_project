@@ -2,107 +2,194 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(5px); /* Blurs the grid behind the modal */
+  backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 5000; /* Keeps it above everything else */
+  z-index: 2000;
   padding: 20px;
-  box-sizing: border-box;
 }
 
 .modal__container {
-  background: #ffffff;
+  background-color: #fcfcfc;
   width: 100%;
-  max-width: 550px;
-  border-radius: 24px;
-  overflow: hidden;
+  max-width: 600px;
+  max-height: 90vh;
+  border-radius: 30px;
   position: relative;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-  animation: slideUp 0.3s ease-out;
+  overflow-y: auto;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  animation: modalFadeIn 0.3s ease-out;
 }
 
-@keyframes slideUp {
+@keyframes modalFadeIn {
   from {
-    transform: translateY(40px);
     opacity: 0;
+    transform: translateY(20px);
   }
   to {
-    transform: translateY(0);
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
 .modal__close {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  background: #ffffff;
+  top: 20px;
+  right: 20px;
+  background: white;
   border: none;
-  font-size: 28px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  font-size: 30px;
+  line-height: 1;
+  color: #1a1a1a;
   cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   z-index: 10;
-  transition: background 0.2s;
+  transition: transform 0.2s ease;
 }
 
 .modal__close:hover {
-  background-color: #f5f5f5;
+  transform: scale(1.1);
 }
 
 .modal__image {
   width: 100%;
-  height: 240px;
+  height: 300px;
   object-fit: cover;
 }
 
 .modal__content {
-  padding: 30px;
+  padding: 40px;
 }
 
 .modal__title {
-  font-family: "Noto Serif", serif;
-  font-size: 28px;
-  margin: 0 0 10px 0;
+  font-family: "Caprasimo-Regular", serif;
+  font-size: 32px;
   color: #1a1a1a;
+  margin-bottom: 10px;
 }
 
 .modal__description {
-  font-family: "Outfit-Medium", sans-serif;
-  color: #666;
+  font-family: "Outfit-Regular", sans-serif;
+  color: #7a7a7a;
   font-size: 16px;
   line-height: 1.6;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
+}
+
+.modal__section {
+  margin-top: 35px;
 }
 
 .modal__subtitle {
   font-family: "Outfit-Bold", sans-serif;
-  font-size: 18px;
-  color: #1a1a1a;
-  margin-bottom: 12px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #a0a0a0;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 5px;
 }
 
-.modal__method-list {
+.modal__list {
+  font-family: "Outfit-Regular", sans-serif;
+  font-size: 16px;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.modal__method-list li {
-  font-family: "Outfit-Medium", sans-serif;
-  font-size: 14px;
+.modal__list-item {
+  color: #333;
+  padding: 12px 0;
+  border-bottom: 1px solid #f5f5f5;
+  display: flex;
+  justify-content: space-between;
+  line-height: 1.4;
+}
+
+.modal__list-item--highlight {
+  color: #1a1a1a;
+  background-color: #fff9e6;
+  margin: 0 -40px;
+  padding: 15px 40px;
+  border-left: 4px solid #ffc800;
+  font-family: "Outfit-Bold", sans-serif;
+}
+
+.modal__list-item:last-child {
+  border-bottom: none;
+}
+
+.modal__instruction-list {
+  counter-reset: recipe-counter;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modal__instruction-step {
+  counter-increment: recipe-counter;
+  display: flex;
+  gap: 15px;
+  font-family: "Outfit-Regular", sans-serif;
+  font-size: 16px;
   color: #444;
   line-height: 1.6;
+  padding: 15px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.modal__instruction-step::before {
+  content: counter(recipe-counter);
+  font-family: "Outfit-Bold", sans-serif;
+  color: #ffc800;
+  font-size: 18px;
+  min-width: 25px;
+}
+
+.modal__instruction-step:last-child {
+  border-bottom: none;
+}
+
+.modal__baking-step {
+  border-left: 3px solid #ffc800;
+  padding: 15px 20px !important;
   margin-bottom: 12px;
-  padding-left: 15px;
-  border-left: 3px solid #ffc800; /* Vertical gold accent line */
+  background-color: #fffdf5;
+  border-bottom: none !important;
+  border-radius: 0 12px 12px 0;
+  font-family: "Outfit-Medium", sans-serif;
+}
+
+.modal__baking-icon {
+  margin-right: 12px;
+  font-size: 18px;
+}
+
+.modal__section:last-of-type {
+  margin-bottom: 60px;
+}
+
+@media (max-width: 480px) {
+  .modal__content {
+    padding: 25px;
+  }
+  .modal__list-item--highlight {
+    margin: 0 -25px;
+    padding: 15px 25px;
+  }
+  .modal__title {
+    font-size: 26px;
+  }
 }
