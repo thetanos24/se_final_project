@@ -2,7 +2,7 @@ import { checkResponse } from "./constants.js";
 
 const latitude = 33.629247;
 const longitude = -112.368143;
-const API_KEY = "176789e498e8f87baeca708340107615";
+const API_KEY = "60ebfdc810f1984e3a0ca906341e86e4";
 
 export const getWeather = () => {
   return fetch(
