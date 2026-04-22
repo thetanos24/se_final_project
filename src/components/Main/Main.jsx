@@ -1,5 +1,6 @@
 import "./Main.css";
 import mainPhoto from "../../images/bakedphoto.jpeg";
+import starterPhoto from "../../images/sourdough-starter.jpg";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUniteContext";
@@ -48,9 +49,24 @@ function Main({ weatherData }) {
             you master sourdough hydration in any climate.
           </h2>
         </div>
-        <Link to="/recipes" className="receipe__button">
-          LET'S BAKE!
-        </Link>
+      </section>
+
+      <section className="starter">
+        <div className="starter__container">
+          <p className="starter__label">TO START</p>
+          <img
+            src={starterPhoto}
+            alt="Active sourdough starter"
+            className="starter__image"
+          />
+          <h2 className="starter__title">
+            You will need your active sourdough starter.
+          </h2>
+
+          <Link to="/recipes" className="receipe__button">
+            LET'S BAKE!
+          </Link>
+        </div>
       </section>
     </>
   );
