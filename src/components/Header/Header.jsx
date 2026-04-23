@@ -21,7 +21,7 @@ function Header() {
               <ToggleSwitch />
             </li>
             <li className="header__nav-item">
-              <a href="/#about" className="header__nav-link">
+              <a href="#about" className="header__nav-link">
                 ABOUT
               </a>
             </li>
