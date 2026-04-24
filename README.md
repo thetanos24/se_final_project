@@ -18,7 +18,7 @@ This project serves as my Final Engineering Project, demonstrating my ability to
 
 ## Key Features
 
-- **Environmental Awareness:** The app automatically detects your city and fetches live temperature and humidity to inform your baking session.
+- **Environmental Awareness:** The app automatically detects location and fetches live temperature and humidity to inform your baking session.
 
 - **Dynamic Hydration Logic:** Provides specific guidance based on current atmospheric conditions, helping to prevent the dough from drying out in arid climates.
 
