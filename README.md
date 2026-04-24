@@ -26,7 +26,7 @@ This project serves as my Final Engineering Project, demonstrating my ability to
 
 - **Resource Library:** A dedicated section for sourdough fundamentals and specialized tips for high-heat baking.
 
-- **Seamless Navigation:** Fully functional routing for Recipes, Resources, and About sections, optimized for static hosting.
+- **Seamless Navigation:** Fully functional routing for Recipes, Resources, and optimized for static hosting.
 
 ## Deployment
 
